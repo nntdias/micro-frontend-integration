@@ -1,0 +1,157 @@
+{
+	"extends": [
+		"airbnb",
+		"plugin:react-hooks/recommended",
+		"prettier",
+		"prettier/react"
+	],
+	"env": {
+		"node": true,
+		"browser": true,
+		"es6": true
+	},
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly"
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": [
+					"src"
+				],
+				"extensions": [
+					".js",
+					".jsx"
+				]
+			}
+		}
+	},
+	"rules": {
+		"arrow-parens": [
+			"error",
+			"as-needed"
+		],
+		"function-paren-newline": [
+			0
+		],
+		"camelcase": [
+			"error",
+			{
+				"ignoreDestructuring": true,
+				"properties": "never"
+			}
+		],
+		"no-console": [
+			"error",
+			{
+				"allow": [
+					"error"
+				]
+			}
+		],
+		"comma-dangle": [
+			"error",
+			{
+				"arrays": "always-multiline",
+				"objects": "always-multiline",
+				"imports": "always-multiline",
+				"exports": "always-multiline",
+				"functions": "ignore"
+			}
+		],
+		"implicit-arrow-linebreak": [
+			"off"
+		],
+		"import/no-cycle": [
+			2,
+			{
+				"maxDepth": 1
+			}
+		],
+		"import/prefer-default-export": "off",
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1,
+				"ArrayExpression": 1,
+				"ObjectExpression": 1,
+				"ignoredNodes": [
+					"TemplateLiteral"
+				]
+			}
+		],
+		"template-curly-spacing": "off",
+		"jsx-a11y/label-has-associated-control": "off",
+		"jsx-a11y/click-events-have-key-events": "off",
+		"max-len": [
+			"error",
+			{
+				"code": 130
+			}
+		],
+		"no-param-reassign": [
+			"warn"
+		],
+		"no-plusplus": [
+			"error",
+			{
+				"allowForLoopAfterthoughts": true
+			}
+		],
+		"no-tabs": [
+			"error",
+			{
+				"allowIndentationTabs": true
+			}
+		],
+		"react/button-has-type": [
+			0
+		],
+		"react/destructuring-assignment": [
+			2,
+			"always",
+			{
+				"ignoreClassFields": true
+			}
+		],
+		"react/forbid-prop-types": [
+			2,
+			{
+				"forbid": [
+					"any",
+					"object"
+				]
+			}
+		],
+		"react/jsx-filename-extension": [
+			"error",
+			{
+				"extensions": [
+					".js",
+					".jsx"
+				]
+			}
+		],
+		"react/jsx-indent": [
+			0
+		],
+		"react/jsx-indent-props": [
+			2,
+			"tab"
+		],
+		"react/jsx-props-no-spreading": [
+			0
+		],
+		"react/no-unused-prop-types": [
+			0
+		],
+		"react/state-in-constructor": [
+			0
+		],
+		"import/no-unresolved": [
+			0
+		]
+	}
+}
