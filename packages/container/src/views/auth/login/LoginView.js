@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 /**
  * LoginView
  */
-const LoginView = () => {
+const LoginView = props => {
 	const ref = useRef(null);
 	const refMount = useRef(null);
 
@@ -11,8 +11,8 @@ const LoginView = () => {
 		if (!refMount.current) {
 			refMount.current = await import('auth/AuthApp').then(({ mount }) => mount);
 		}
-		refMount.current(ref.current);
-	}, []);
+		refMount.current(ref.current, props);
+	}, [props]);
 
 	useEffect(() => {
 		loadModule();
