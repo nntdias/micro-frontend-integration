@@ -1,19 +1,19 @@
-import 'react-perfect-scrollbar/dist/css/styles.css';
-import React from 'react';
-import { useRoutes } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { ThemeProvider } from '@material-ui/core';
+import LoginView from 'src/views/auth/login/LoginView';
 import GlobalStyles from './components/GlobalStyles';
 import theme from './theme';
-import routes from './router/routes';
-import './mixins/chartjs';
+import { fetchStatus } from './api/statusAPI';
 
 const App = () => {
-	const routing = useRoutes(routes);
+	useEffect(() => {
+		fetchStatus();
+	}, []);
 
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyles />
-			{routing}
+			<LoginView />
 		</ThemeProvider>
 	);
 };

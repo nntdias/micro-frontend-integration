@@ -2,8 +2,8 @@ const { merge } = require('webpack-merge');
 const commonConfig = require('./webpack.common');
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const settings = require('./settings');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 const devConfig = {
 	mode: 'development',
@@ -13,19 +13,18 @@ const devConfig = {
 		historyApiFallback: {
 			index: 'index.html',
 		},
-		open: true,
-		liveReload: true,
-		watchContentBase: true,
 	},
 	plugins: [
 		new Dotenv({
 			path: './.env.development',
 		}),
 		new ModuleFederationPlugin({
-			name: 'container',
-			remotes: {
-				auth: 'auth@http://localhost:8081/remoteEntry.js',
+			name: 'auth',
+			filename: 'remoteEntry.js',
+			exposes: {
+				'./AuthApp': './src/bootstrap',
 			},
+			shared: ['react', 'react-dom'],
 		}),
 	],
 };

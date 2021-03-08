@@ -1,0 +1,15 @@
+{
+  "name": "mf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "author": "Nonato Dias",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "open": "^8.0.2"
+  }
+}

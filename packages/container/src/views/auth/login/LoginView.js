@@ -1,41 +1,24 @@
-import React, { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Box, Container } from '@material-ui/core';
-import Page from 'src/components/Page';
-import { signin } from 'src/api/authAPI';
-import { useStyles } from './styles';
-import LoginForm from './components/LoginForm';
-
-const initialValues = {
-	email: 'alguem@anyemail.com',
-	password: '12356',
-};
+import React, { useCallback, useEffect, useRef } from 'react';
 
 /**
  * LoginView
  */
 const LoginView = () => {
-	const classes = useStyles();
-	const navigate = useNavigate();
+	const ref = useRef(null);
+	const refMount = useRef(null);
 
-	const onSubmitHandler = useCallback(
-		params => {
-			signin(params).then(() => {
-				navigate('/app/dashboard', { replace: true });
-			});
-		},
-		[navigate]
-	);
+	const loadModule = useCallback(async () => {
+		if (!refMount.current) {
+			refMount.current = await import('auth/AuthApp').then(({ mount }) => mount);
+		}
+		refMount.current(ref.current);
+	}, []);
 
-	return (
-		<Page className={classes.root} title="Login">
-			<Box display="flex" flexDirection="column" height="100%" justifyContent="center">
-				<Container maxWidth="sm">
-					<LoginForm initialValues={initialValues} onSubmit={onSubmitHandler} />
-				</Container>
-			</Box>
-		</Page>
-	);
+	useEffect(() => {
+		loadModule();
+	}, [loadModule]);
+
+	return <div ref={ref} />;
 };
 
 export default LoginView;
