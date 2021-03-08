@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { Box, Container } from '@material-ui/core';
 import Page from 'src/components/Page';
 import { signin } from 'src/api/authAPI';
-import PropTypes from 'prop-types';
 import { useStyles } from './styles';
 import LoginForm from './components/LoginForm';
 
@@ -14,17 +13,14 @@ const initialValues = {
 /**
  * LoginView
  */
-const LoginView = ({ onSignin }) => {
+const LoginView = () => {
 	const classes = useStyles();
 
-	const onSubmitHandler = useCallback(
-		params => {
-			signin(params).then(() => {
-				onSignin();
-			});
-		},
-		[onSignin]
-	);
+	const onSubmitHandler = useCallback(params => {
+		signin(params).then(() => {
+			window.location.reload();
+		});
+	}, []);
 
 	return (
 		<Page className={classes.root} title="Login">
@@ -37,12 +33,6 @@ const LoginView = ({ onSignin }) => {
 	);
 };
 
-LoginView.propTypes = {
-	onSignin: PropTypes.func,
-};
-
-LoginView.defaultProps = {
-	onSignin: () => {},
-};
+LoginView.propTypes = {};
 
 export default LoginView;

@@ -25,6 +25,7 @@ const devConfig = {
 			name: 'container',
 			remotes: {
 				auth: 'auth@http://localhost:8081/remoteEntry.js',
+				dashboard: 'dashboard@http://localhost:8082/remoteEntry.js',
 			},
 		}),
 	],

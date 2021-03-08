@@ -24,7 +24,7 @@ const devConfig = {
 			exposes: {
 				'./AuthApp': './src/bootstrap',
 			},
-			shared: ['react', 'react-dom'],
+			shared: ['react', 'react-dom', '@material-ui/core'],
 		}),
 	],
 };

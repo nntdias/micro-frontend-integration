@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link as RouterLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Box, Button, Link, TextField, Typography } from '@material-ui/core';
@@ -63,7 +64,7 @@ const LoginForm = ({ initialValues, onSubmit }) => {
 					</Box>
 					<Typography color="textSecondary" variant="body1">
 						Ainda não tem uma conta?{' '}
-						<Link to="/" variant="h6">
+						<Link component={RouterLink} to="/register" variant="h6">
 							Inscrever-se
 						</Link>
 					</Typography>

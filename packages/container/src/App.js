@@ -1,21 +1,10 @@
-import 'react-perfect-scrollbar/dist/css/styles.css';
 import React from 'react';
-import { useRoutes } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/core';
-import GlobalStyles from './components/GlobalStyles';
-import theme from './theme';
-import routes from './router/routes';
-import './mixins/chartjs';
+import Dashboard from './containers/Dashboard/Dashboard';
+import Auth from './containers/Auth/Auth';
+import { hasValidCookie } from './utils/cookieUtil';
 
 const App = () => {
-	const routing = useRoutes(routes);
-
-	return (
-		<ThemeProvider theme={theme}>
-			<GlobalStyles />
-			{routing}
-		</ThemeProvider>
-	);
+	return hasValidCookie() ? <Dashboard /> : <Auth />;
 };
 
 export default App;
